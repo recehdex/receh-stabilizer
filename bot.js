@@ -17,7 +17,7 @@ const CONFIG = {
     gasLimit: 170000,
     LOWER_BOUND: 96,
     TARGET_SELL: 98,
-    UPPER_BOUND: 100,
+    UPPER_BOUND: 99,
     TARGET_BUY: 98,
     maxRetries: 3,
     retryDelay: 1000,
