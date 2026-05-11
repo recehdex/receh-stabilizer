@@ -1,24 +1,27 @@
-name: RECEH Stabilizer Bot
+name: Run RECEH Stabilizer Bot
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Setiap jam
-  workflow_dispatch:  # Bisa run manual
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    
+    - name: Install dependencies
+      run: npm ci
       
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          
-      - name: Install ethers
-        run: npm install ethers@5.7.2
-        
-      - name: Run Bot
-        env:
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        run: node bot-runner.js
+    - name: Run bot
+      env:
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      run: npm start
