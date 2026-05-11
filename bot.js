@@ -95,8 +95,8 @@ async function getCurrentGasPrice() {
 
 function calculateSellRecehAmount(reserveRECEH, reserveUSDT, targetPrice) {
     const R = parseFloat(ethers.utils.formatEther(reserveRECEH));
-    const W = parseFloat(ethers.utils.formatEther(reserveUSDT));
-    const currentPrice = R / W;
+    const U = parseFloat(ethers.utils.formatEther(reserveUSDT));
+    const currentPrice = R / U;
     if (currentPrice >= targetPrice) return ethers.BigNumber.from(0);
     const sqrtRatio = Math.sqrt(targetPrice / currentPrice);
     const x = R * (sqrtRatio - 1);
@@ -105,11 +105,11 @@ function calculateSellRecehAmount(reserveRECEH, reserveUSDT, targetPrice) {
 
 function calculateBuyRecehAmount(reserveRECEH, reserveUSDT, targetPrice) {
     const R = parseFloat(ethers.utils.formatEther(reserveRECEH));
-    const W = parseFloat(ethers.utils.formatEther(reserveUSDT));
-    const currentPrice = R / W;
+    const U = parseFloat(ethers.utils.formatEther(reserveUSDT));
+    const currentPrice = R / U;
     if (currentPrice <= targetPrice) return ethers.BigNumber.from(0);
     const sqrtRatio = Math.sqrt(currentPrice / targetPrice);
-    const y = W * (sqrtRatio - 1);
+    const y = U * (sqrtRatio - 1);
     return ethers.utils.parseUnits(y.toFixed(6), 18);
 }
 
