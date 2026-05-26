@@ -15,7 +15,7 @@ const CONFIG = {
     },
     slippageBps: 9991,
     gasLimit: 170000,
-    LOWER_BOUND: 96,
+    LOWER_BOUND: 9.6,
     TARGET_SELL: 9.8,
     UPPER_BOUND: 10.4,
     TARGET_BUY: 9.8,
